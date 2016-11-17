@@ -79,7 +79,7 @@
 ### about the InfluxDB cluster.
 ###
 
-[meta]
+{% if not config_meta|length %}# {% endif %}[meta]
   # Where the metadata/raft database is stored
   {{ macros.config_row(config_meta, 'dir', '/var/lib/influxdb/meta') }}
 
@@ -98,7 +98,7 @@
 ### defaults should work for most systems.
 ###
 
-[data]
+{% if not config_data|length %}# {% endif %}[data]
   # The directory where the TSM storage engine stores TSM files.
   {{ macros.config_row(config_data, 'dir', '/var/lib/influxdb/data') }}
 
@@ -149,7 +149,7 @@
 ### Controls the clustering service configuration.
 ###
 
-[coordinator]
+{% if not config_coordinator|length %}# {% endif %}[coordinator]
   # The default time a write request will wait until a "timeout" error is returned to the caller.
   {{ macros.config_row(config_coordinator, 'write-timeout', '# write-timeout = "10s"', 0, true) }}
 
@@ -187,7 +187,7 @@
 ### Controls the enforcement of retention policies for evicting old data.
 ###
 
-[retention]
+{% if not config_retention|length %}# {% endif %}[retention]
   # Determines whether retention policy enforcment enabled.
   {{ macros.config_row(config_retention, 'enabled', '# enabled = true', 0, true) }}
 
@@ -202,7 +202,7 @@
 ### future, will ever be created. Shards are never precreated that would be wholly
 ### or partially in the past.
 
-[shard-precreation]
+{% if not config_shard_precreation|length %}# {% endif %}[shard-precreation]
   # Determines whether shard pre-creation service is enabled.
   {{ macros.config_row(config_shard_precreation, 'enabled', '# enabled = true', 0, true) }}
 
@@ -222,7 +222,7 @@
 ### and a replication factor of 1, if it does not exist. In all cases the
 ### this retention policy is configured as the default for the database.
 
-[monitor]
+{% if not config_monitor|length %}# {% endif %}[monitor]
   # Whether to record statistics internally.
   {{ macros.config_row(config_monitor, 'store-enabled', '# store-enabled = true', 0, true) }}
 
@@ -240,7 +240,7 @@
 ###
 ### NOTE: This interface is deprecated as of 1.1.0 and will be removed in a future release.
 
-[admin]
+{% if not config_admin|length %}# {% endif %}[admin]
   # Determines whether the admin service is enabled.
   {{ macros.config_row(config_admin, 'enabled', '# enabled = false', 0, true) }}
 
@@ -260,7 +260,7 @@
 ### mechanism for getting data into and out of InfluxDB.
 ###
 
-[http]
+{% if not config_http|length %}# {% endif %}[http]
   # Determines whether HTTP endpoint is enabled.
   {{ macros.config_row(config_http, 'enabled', '# enabled = true', 0, true) }}
 
@@ -315,7 +315,7 @@
 ### received by the InfluxDB host.
 ###
 
-[subscriber]
+{% if not config_subscriber|length %}# {% endif %}[subscriber]
   # Determines whether the subscriber service is enabled.
   {{ macros.config_row(config_subscriber, 'enabled', '# enabled = true', 0, true) }}
 
@@ -342,7 +342,7 @@
 ### Controls one or many listeners for Graphite data.
 ###
 
-[[graphite]]
+{% if not config_graphite|length %}# {% endif %}[[graphite]]
   # Determines whether the graphite endpoint is enabled.
   {{ macros.config_row(config_graphite, 'enabled', '# enabled = false', 0, true) }}
   {{ macros.config_row(config_graphite, 'database', '# database = "graphite"', 0, true) }}
@@ -390,7 +390,7 @@
 ### Controls one or many listeners for collectd data.
 ###
 
-[[collectd]]
+{% if not config_collectd|length %}# {% endif %}[[collectd]]
   {{ macros.config_row(config_collectd, 'enabled', '# enabled = false', 0, true) }}
   {{ macros.config_row(config_collectd, 'bind-address', '# bind-address = ":25826"', 0, true) }}
   {{ macros.config_row(config_collectd, 'database', '# database = "collectd"', 0, true) }}
@@ -421,7 +421,7 @@
 ### Controls one or many listeners for OpenTSDB data.
 ###
 
-[[opentsdb]]
+{% if not config_opentsdb|length %}# {% endif %}[[opentsdb]]
   {{ macros.config_row(config_opentsdb, 'enabled', '# enabled = false', 0, true) }}
   {{ macros.config_row(config_opentsdb, 'bind-address', '# bind-address = ":4242"', 0, true) }}
   {{ macros.config_row(config_opentsdb, 'database', '# database = "opentsdb"', 0, true) }}
@@ -452,7 +452,7 @@
 ### Controls the listeners for InfluxDB line protocol data via UDP.
 ###
 
-[[udp]]
+{% if not config_udp|length %}# {% endif %}[[udp]]
   {{ macros.config_row(config_udp, 'enabled', '# enabled = false', 0, true) }}
   {{ macros.config_row(config_udp, 'bind-address', '# bind-address = ":8089"', 0, true) }}
   {{ macros.config_row(config_udp, 'database', '# database = "udp"', 0, true) }}
@@ -480,7 +480,7 @@
 ### Controls how continuous queries are run within InfluxDB.
 ###
 
-[continuous_queries]
+{% if not config_continuous_queries|length %}# {% endif %}[continuous_queries]
   # Determiens whether the continuous query service is enabled.
   {{ macros.config_row(config_continuous_queries, 'enabled', '# enabled = true', 0, true) }}
 
