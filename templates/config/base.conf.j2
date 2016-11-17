@@ -206,7 +206,7 @@
 ###
 
 [admin]
-  {{ macros.config_row(config_admin, 'enabled', true) }}
+  {{ macros.config_row(config_admin, 'enabled', false) }}
   {{ macros.config_row(config_admin, 'bind-address', ':8083') }}
   {{ macros.config_row(config_admin, 'https-enabled', false) }}
   {{ macros.config_row(config_admin, 'https-certificate', '/etc/ssl/influxdb.pem') }}
