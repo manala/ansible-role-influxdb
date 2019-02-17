@@ -1,6 +1,6 @@
 ---
 
-- name: users > Create Influx users
+- name: users > Change Influx users password
   command: >
     {{ manala_influxdb_influx_bin }} 
     {{ katmai_influxdb_enable_ssl | default(omit) }} 
@@ -8,7 +8,6 @@
     -host {{ katmai_influxdb_host }} 
     {{ ('-username ' + katmai_influxdb_username) if katmai_influxdb_username is defined else '' }} 
     {{ ('-password ' + katmai_influxdb_password) if katmai_influxdb_password is defined else '' }} 
-    -database '{{ item.database }}' 
-    -execute "CREATE USER {{ item.name }} WITH PASSWORD '{{ item.password }}'"
-  with_items: "{{ manala_influxdb_users }}"
+    -execute "SET PASSWORD FOR {{ item.name }} = '{{ item.password }}'"
+  with_items: "{{ influxdb_change_password }}"
   changed_when: false

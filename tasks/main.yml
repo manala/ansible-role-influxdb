@@ -31,3 +31,13 @@
 - import_tasks: privileges.yml
   tags:
     - manala_influxdb
+
+# Change password
+- import_tasks: changepw.yml
+  tags:
+    - manala_influxdb
+
+# Remove
+- import_tasks: remove.yml
+  tags:
+    - manala_influxdb

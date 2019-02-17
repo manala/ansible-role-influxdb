@@ -14,8 +14,22 @@ manala_influxdb_users: []
 # Privileges
 manala_influxdb_privileges: []
 
+# Remove
+influxdb_remove_db: []
+influxdb_remove_user: []
+
+# Change password
+influxdb_change_password: []
+
 # Bin
 manala_influxdb_influx_bin: /usr/bin/influx
+
+# Extra connection variables
+#katmai_influxdb_enable_ssl: ""
+#katmai_influxdb_enable_selfsigned_ssl: ""
+katmai_influxdb_host: localhost
+#katmai_influxdb_username: ""
+#katmai_influxdb_password: ""
 
 # Config
 manala_influxdb_config_file:     /etc/influxdb/influxdb.conf
