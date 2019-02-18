@@ -20,6 +20,6 @@
     -host {{ katmai_influxdb_host }} 
     {{ ('-username ' + katmai_influxdb_username) if katmai_influxdb_username is defined else '' }} 
     {{ ('-password ' + katmai_influxdb_password) if katmai_influxdb_password is defined else '' }} 
-    -execute "DROP USER {{ item.user }}"
+    -execute "DROP USER \"{{ item.user }}\""
   with_items: "{{ influxdb_remove_user }}"
   changed_when: false
